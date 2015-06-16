@@ -1,32 +1,91 @@
 # robot
 
-TODO: Write a description here for library
+Small robot walking around the board.
 
 ## Installation
 
-Add it to `Projectfile`
-
-```crystal
-deps do
-  github "[your-github-name]/robot"
-end
+```bash
+git clone https://github.com/waterlink/robot.cr
+cd robot.cr
+make
 ```
 
 ## Usage
 
-```crystal
-require "robot"
+```bash
+./bin/robot
+robot :001 > board 6,6
+robot :002 > place 3,2,west
+robot :003 > forward
+robot :004 > right
+robot :005 > forward
+robot :006 > report
+=> 2,1,north
+robot :007 > ^D
+=> exit
 ```
 
-TODO: Write usage here for library
+## Commands
+
+### board M,N
+
+Creates a board of size M,N and makes it current active board. Board is indexed: `{ X: 1..M, Y: 1..N }`.
+
+### place X,Y,D
+
+Places the robot at position X,Y on active board facing direction D. D can be:
+
+- `north`,
+- `east`,
+- `south`,
+- `west`.
+
+If direction is invalid, command is ignored.
+
+If position is not on board, command is ignored.
+
+If there is no active board, command is ignored.
+
+### forward
+
+Moves the robot towards the direction it faces by one board cell.
+
+If robot is not placed on board, command is ignored.
+
+If movement would result in robot falling of the board, command is ignored.
+
+### left
+
+Rotates robot counterclockwise.
+
+If robot is not placed on board, command is ignored.
+
+### right
+
+Rotates robot clockwise.
+
+If robot is not placed on board, command is ignored.
+
+### report
+
+Reports current robot position.
+
+If robot is not placed on board, command is ignored.
+
+### exit or CTRL+D or EOF
+
+Exits the application.
 
 ## Development
 
-TODO: Write instructions for development
+Just use normal TDD cycle.
+
+- `crystal spec` to run test suite.
+- `make` to compile the final binary at `./bin/robot`.
 
 ## Contributing
 
-1. Fork it ( https://github.com/[your-github-name]/robot/fork )
+1. Fork it ( https://github.com/waterlink/robot.cr/fork )
 2. Create your feature branch (git checkout -b my-new-feature)
 3. Commit your changes (git commit -am 'Add some feature')
 4. Push to the branch (git push origin my-new-feature)
@@ -34,4 +93,4 @@ TODO: Write instructions for development
 
 ## Contributors
 
-- [your-github-name](https://github.com/[your-github-name]) Oleksii Fedorov - creator, maintainer
+- [waterlink](https://github.com/waterlink) Oleksii Fedorov - creator, maintainer
