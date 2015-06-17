@@ -1,5 +1,6 @@
 require "./robot/*"
 
 module Robot
-  # TODO Put your code here
 end
+
+p "It works"
