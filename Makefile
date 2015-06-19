@@ -1,9 +1,14 @@
 O := bin
 SOURCES := $(shell find src -name '*.cr')
+SOURCES := $(shell find spec -name '*.cr')
 CR := crystal build
+CRSPEC := crystal spec
 
 all: robot
 
 robot: $(SOURCES)
 	@mkdir -p $(O)
 	$(CR) -o $(O)/robot src/robot.cr
+
+test: $(SOURCES) $(SPEC_SOURCES)
+	$(CRSPEC)
