@@ -80,8 +80,9 @@ Exits the application.
 
 Just use normal TDD cycle.
 
-- `crystal spec` to run test suite.
+- `make test` to run all test suites.
 - `make` to compile the final binary at `./bin/robot`.
+- `crystal spec spec/some_file_spec.cr` to run only one test suite.
 
 ## Contributing
 
