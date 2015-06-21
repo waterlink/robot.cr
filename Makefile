@@ -12,3 +12,7 @@ robot: $(SOURCES)
 
 test: $(SOURCES) $(SPEC_SOURCES)
 	$(CRSPEC)
+
+clean:
+	rm -rf $(0)
+	rm -rf .crystal
