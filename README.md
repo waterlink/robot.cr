@@ -83,7 +83,7 @@ Just use normal TDD cycle.
 - `make test` to run all test suites.
 - `crystal spec spec/some_file_spec.cr` to run only one test suite.
 - `make` to compile the final binary at `./bin/robot`.
-- `make clean` to remove crystal cache and compiled files in `./bin/`
+- `make clean` to remove crystal cache in `./.crystal` and compiled files in `./bin/`
 
 ## Contributing
 
