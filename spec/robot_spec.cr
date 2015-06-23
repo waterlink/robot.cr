@@ -1,9 +1,6 @@
 require "./spec_helper"
 
-describe Robot do
-  # TODO: Write tests
-
-  it "works" do
-    false.should eq(true)
+module Robot
+  describe Robot do
   end
 end

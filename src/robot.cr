@@ -1,6 +1,4 @@
-require "./robot/*"
+require "./cli"
 
 module Robot
 end
-
-p "It works"
