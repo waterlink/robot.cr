@@ -26,6 +26,7 @@ module Robot
     private def prompt
       increase_counter
       stdout.printf("robot :%03d > ", counter)
+      stdout.flush
     end
   end
 end
