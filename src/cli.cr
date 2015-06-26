@@ -1,8 +1,8 @@
 module Robot
   class Cli
-    getter stdin
-    getter stdout
-    getter counter
+    private getter stdin
+    private getter stdout
+    private getter counter
 
     def initialize(@stdin = STDIN, @stdout = STDOUT)
       @counter = 0
