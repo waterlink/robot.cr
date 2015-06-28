@@ -1,19 +1,21 @@
+require "./input_controller"
+
 module Robot
   class Cli
     private getter stdin
     private getter stdout
     private getter counter
+    private getter input_controller
 
     def initialize(@stdin = STDIN, @stdout = STDOUT)
       @counter = 0
+      @input_controller = InputController.new
     end
 
     def start
       prompt
       stdin.each_line do |line|
-        if line.strip == "report"
-          stdout.puts("=> 2,1,north")
-        end
+        render(input_controller.handle(line))
         prompt
       end
       stdout.puts("exit")
@@ -27,6 +29,10 @@ module Robot
       increase_counter
       stdout.printf("robot :%03d > ", counter)
       stdout.flush
+    end
+
+    private def render(view)
+      stdout.print(view.to_s)
     end
   end
 end
