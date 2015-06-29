@@ -15,7 +15,7 @@ module Robot
     def start
       prompt
       stdin.each_line do |line|
-        render(input_controller.handle(line))
+        render(input_controller.handle(line.strip))
         prompt
       end
       stdout.puts("exit")
