@@ -1,5 +1,4 @@
 require "./spec_helper"
-require "../src/view"
 
 module Robot
   view TestView, [hello, world] do
