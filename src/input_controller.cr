@@ -1,15 +1,12 @@
 require "./view"
+require "./report_command"
 
 module Robot
   class InputController
     def handle(line)
-      return ReportView.new if line == "report"
+      return ReportCommand.new.call if line == "report"
       EmptyView.new
     end
-  end
-
-  view ReportView do
-    io << "=> 2,1,north\n"
   end
 
   view EmptyView do
