@@ -1,5 +1,8 @@
 module Robot
-  macro view(name, params=[] of ASTNode, &block)
+  macro view(definition, &block)
+    {% name = definition.receiver %}
+    {% params = definition.args %}
+
     struct {{name.id}}
       {{
         params.map do |param|

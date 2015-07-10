@@ -1,11 +1,11 @@
 require "./spec_helper"
 
 module Robot
-  view TestView, [hello, world] do
+  view TestView[hello, world] do
     io << "hello: #{hello}, world: #{world}"
   end
 
-  view EmptyTestView do
+  view EmptyTestView[] do
     io << ""
   end
 
