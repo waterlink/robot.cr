@@ -14,5 +14,9 @@ module Robot
       self.left == other.left &&
         self.top == other.top
     end
+
+    def build_view(view_factory)
+      view_factory.build({ "name" => name })
+    end
   end
 end

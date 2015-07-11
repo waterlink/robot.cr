@@ -8,11 +8,24 @@ module Robot
     end
 
     def call
-      ReportView.new(Position.new(2, 1), Direction.north)
+      ReportView.build({
+        "position" => Position.new(2, 1),
+        "direction" => Direction.north,
+      })
     end
   end
 
   view ReportView[position, direction] do
-    io << "=> 2,1,north\n"
+    position_view = position.build_view(PositionView)
+    direction_view = direction.build_view(DirectionView)
+    io << "=> #{position_view},#{direction_view}\n"
+  end
+
+  view PositionView[left, top] do
+    io << "#{left},#{top}"
+  end
+
+  view DirectionView[name] do
+    io << name
   end
 end

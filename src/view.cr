@@ -13,6 +13,10 @@ module Robot
       def initialize({{ params.map { |p| "@#{p.id}".id }.argify }})
       end
 
+      def self.build(hash)
+        new({{ params.map { |p| "hash.fetch(\"#{p.id}\")".id }.argify }})
+      end
+
       def to_s(io)
         {{ block.body }}
       end
