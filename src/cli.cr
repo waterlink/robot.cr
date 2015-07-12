@@ -1,5 +1,3 @@
-require "./input_controller"
-
 module Robot
   class Cli
     private getter stdin

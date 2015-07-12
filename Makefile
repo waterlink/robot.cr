@@ -8,7 +8,7 @@ all: robot
 
 robot: $(SOURCES)
 	@mkdir -p $(O)
-	$(CR) -o $(O)/robot src/binary.cr
+	$(CR) -o $(O)/robot src/binary/robot.cr
 
 test: $(SOURCES) $(SPEC_SOURCES)
 	$(CRSPEC)

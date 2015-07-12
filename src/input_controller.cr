@@ -1,12 +1,16 @@
 require "./view"
-require "./report_command"
 
 module Robot
   class InputController
-    private getter robot
+    private getter board, robot
 
     def initialize
-      @robot = Robot.new
+      @board = Board.new(10, 10)
+      @robot = PlacedRobot.new(
+        board,
+        Position.new(2, 1),
+        Direction.north,
+      )
     end
 
     def handle(line)

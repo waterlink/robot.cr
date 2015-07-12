@@ -1,17 +1,12 @@
-require "./view"
-require "./position"
-require "./direction"
-
 module Robot
   class ReportCommand
+    private getter robot
+
     def initialize(@robot)
     end
 
     def call
-      ReportView.build({
-        "position" => Position.new(2, 1),
-        "direction" => Direction.north,
-      })
+      robot.build_view(ReportView)
     end
   end
 

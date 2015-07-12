@@ -1,3 +1,3 @@
-require "./robot"
+require "../robot"
 
 Robot::Cli.new.start
