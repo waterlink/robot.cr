@@ -1,9 +1,6 @@
 module Robot
   class Cli
-    private getter stdin
-    private getter stdout
-    private getter counter
-    private getter input_controller
+    private getter stdin, stdout, counter, input_controller
 
     def initialize(@stdin = STDIN, @stdout = STDOUT)
       @counter = 0
