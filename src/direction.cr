@@ -24,7 +24,7 @@ module Robot
     end
 
     def move(position)
-      position.move(left, top)
+      position._move(left, top)
     end
 
     def rotate_left

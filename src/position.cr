@@ -10,7 +10,7 @@ module Robot
         self.top == other.top
     end
 
-    def move(left, top)
+    def _move(left, top)
       self.class.new(
         self.left + left,
         self.top + top,
