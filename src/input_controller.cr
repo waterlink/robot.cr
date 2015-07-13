@@ -10,12 +10,17 @@ module Robot
     end
 
     def handle(line)
-      return ReportCommand.new(robot).call if line == "report"
-      handle_place(line) ||
+      handle_report(line) ||
+        handle_place(line) ||
         handle_forward(line) ||
         handle_left(line) ||
         handle_right(line) ||
         EmptyView.new
+    end
+
+    def handle_report(line)
+      return unless line == "report"
+      ReportCommand.new(robot).call
     end
 
     def handle_place(line)
