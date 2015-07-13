@@ -10,6 +10,13 @@ module Robot
         self.top == other.top
     end
 
+    def move(left, top)
+      self.class.new(
+        self.left + left,
+        self.top + top,
+      )
+    end
+
     def build_view(view_factory)
       view_factory.build({
         "left" => left,
