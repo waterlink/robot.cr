@@ -49,7 +49,7 @@ module Robot
 
     private def handle_right(line)
       return unless line == "right"
-      state.augment(robot: robot.right)
+      RightCommand.new(state).call
     end
 
     private delegate robot, state
