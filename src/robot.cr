@@ -12,9 +12,15 @@ module Robot
   end
 
   class PlacedRobot < Robot
-    private getter board, position, direction
+    protected getter board, position, direction
 
     def initialize(@board, @position, @direction)
+    end
+
+    def ==(other : PlacedRobot)
+      self.board == other.board &&
+        self.position == other.position &&
+        self.direction == other.direction
     end
 
     def forward
