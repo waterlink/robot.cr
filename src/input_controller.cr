@@ -51,9 +51,6 @@ module Robot
       return unless line == "right"
       RightCommand.new(state).call
     end
-
-    private delegate robot, state
-    private delegate board, state
   end
 
   view EmptyView[] do
