@@ -15,7 +15,7 @@ module Robot
       state.view
     end
 
-    def new_state(line)
+    private def new_state(line)
       handle_report(line) ||
         handle_place(line) ||
         handle_forward(line) ||
@@ -24,12 +24,12 @@ module Robot
         state.augment
     end
 
-    def handle_report(line)
+    private def handle_report(line)
       return unless line == "report"
       @state = ReportCommand.new(state).call
     end
 
-    def handle_place(line)
+    private def handle_place(line)
       command, args = line.split(" ")
       return unless command == "place"
       PlaceCommand.new(state, args.split(",")).call
@@ -37,20 +37,23 @@ module Robot
       nil
     end
 
-    def handle_forward(line)
+    private def handle_forward(line)
       return unless line == "forward"
-      state.augment(robot: state.robot.forward)
+      state.augment(robot: robot.forward)
     end
 
-    def handle_left(line)
+    private def handle_left(line)
       return unless line == "left"
-      state.augment(robot: state.robot.left)
+      state.augment(robot: robot.left)
     end
 
-    def handle_right(line)
+    private def handle_right(line)
       return unless line == "right"
-      state.augment(robot: state.robot.right)
+      state.augment(robot: robot.right)
     end
+
+    private delegate robot, state
+    private delegate board, state
   end
 
   view EmptyView[] do
