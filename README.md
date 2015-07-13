@@ -85,6 +85,14 @@ Just use normal TDD cycle.
 - `make` to compile the final binary at `./bin/robot`.
 - `make clean` to remove crystal cache in `./.crystal` and compiled files in `./bin/`
 
+## TODO
+
+- Ignore commands that will make robot fall off
+- Ignore `place` command that will place robot out of board
+- Ignore `board` command with invalid arguments
+- Ignore `place` command with invalid arguments
+- Make it output warning for each ignored command with exact reason, why it was ignored
+
 ## Contributing
 
 1. Fork it ( https://github.com/waterlink/robot.cr/fork )
