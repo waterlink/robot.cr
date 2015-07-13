@@ -2,11 +2,12 @@ require "./view"
 
 module Robot
   class InputController
-    private getter board, robot
+    private getter board, robot, state
 
     def initialize
       @board = Board.new(10, 10)
       @robot = Robot.new
+      @state = State.new(board, robot)
     end
 
     def handle(line)
@@ -25,15 +26,11 @@ module Robot
 
     def handle_place(line)
       command, args = line.split(" ")
-      if command == "place"
-        left, top, direction = args.split(",")
-        @robot = PlacedRobot.new(
-          board,
-          Position.new(left.to_i, top.to_i),
-          Direction.from_name(direction),
-        )
-        nil
-      end
+      return unless command == "place"
+      left, top, direction = args.split(",")
+      @state = PlaceCommand.new(state, args.split(",")).call
+      @robot = state.robot
+      nil
     rescue IndexOutOfBounds
       nil
     end
