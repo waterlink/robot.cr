@@ -9,6 +9,7 @@ module Robot
     end
 
     def call
+      return state.augment if state.board.is_a?(NullBoard)
       state.augment(robot: PlacedRobot.new(
         state.board,
         Position.new(left, top),

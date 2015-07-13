@@ -11,6 +11,7 @@ module Robot
 
       it "works correctly with report command" do
         controller = InputController.new
+        controller.handle("board 10,10")
         controller.handle("place 3,2,west")
         controller.handle("report")
           .should eq(ReportView.new(Position.new(3,2), Direction.west))

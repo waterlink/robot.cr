@@ -3,4 +3,7 @@ module Robot
     def initialize(@width, @height)
     end
   end
+
+  class NullBoard
+  end
 end
