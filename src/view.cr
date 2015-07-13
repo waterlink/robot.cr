@@ -4,11 +4,9 @@ module Robot
     {% params = definition.args %}
 
     struct {{name.id}}
-      {{
-        params.map do |param|
-          "protected getter #{param.id}".id
-        end.join("\n").id
-      }}
+      {% unless params.empty? %}
+      protected getter {{ params.argify }}
+      {% end %}
 
       def initialize({{ params.map { |p| "@#{p.id}".id }.argify }})
       end
