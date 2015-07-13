@@ -44,7 +44,7 @@ module Robot
 
     private def handle_left(line)
       return unless line == "left"
-      state.augment(robot: robot.left)
+      LeftCommand.new(state).call
     end
 
     private def handle_right(line)
