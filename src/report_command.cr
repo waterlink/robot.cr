@@ -1,13 +1,15 @@
 module Robot
   class ReportCommand
-    private getter robot
+    private getter state
 
-    def initialize(@robot)
+    def initialize(@state)
     end
 
     def call
-      robot.build_view(ReportView)
+      state.augment(view: robot.build_view(ReportView))
     end
+
+    delegate robot, state
   end
 
   view ReportView[position, direction] do

@@ -21,13 +21,14 @@ module Robot
 
     def handle_report(line)
       return unless line == "report"
-      ReportCommand.new(robot).call
+      @state = ReportCommand.new(state).call
+      state.view
     end
 
     def handle_place(line)
       command, args = line.split(" ")
       return unless command == "place"
-      left, top, direction = args.split(",")
+
       @state = PlaceCommand.new(state, args.split(",")).call
       @robot = state.robot
       nil
@@ -38,18 +39,21 @@ module Robot
     def handle_forward(line)
       return unless line == "forward"
       @robot = robot.forward
+      @state = state.augment(robot: robot)
       nil
     end
 
     def handle_left(line)
       return unless line == "left"
       @robot = robot.left
+      @state = state.augment(robot: robot)
       nil
     end
 
     def handle_right(line)
       return unless line == "right"
       @robot = robot.right
+      @state = state.augment(robot: robot)
       nil
     end
   end

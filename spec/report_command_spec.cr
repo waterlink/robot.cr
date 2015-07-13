@@ -6,24 +6,27 @@ module Robot
       board = Board.new(10, 10)
       position = Position.new(3, 7)
       direction = Direction.west
-
       robot = PlacedRobot.new(board, position, direction)
-      command = ReportCommand.new(robot)
 
-      command.call.should eq(
+      state = State.new(board, robot)
+      command = ReportCommand.new(state)
+
+      command.call.view.should eq(
         ReportView.new(position, direction)
       )
 
-      command.call.to_s.should eq(
+      command.call.view.to_s.should eq(
         "=> 3,7,west\n"
       )
     end
 
     it "returns empty view when robot is not placed" do
+      board = Board.new(10, 10)
       robot = Robot.new
-      command = ReportCommand.new(robot)
-      command.call.should eq(EmptyView.new)
-      command.call.to_s.should eq("")
+      state = State.new(board, robot)
+      command = ReportCommand.new(state)
+      command.call.view.should eq(EmptyView.new)
+      command.call.view.to_s.should eq("")
     end
   end
 end
