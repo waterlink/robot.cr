@@ -39,7 +39,7 @@ module Robot
 
     private def handle_forward(line)
       return unless line == "forward"
-      state.augment(robot: robot.forward)
+      ForwardCommand.new(state).call
     end
 
     private def handle_left(line)
